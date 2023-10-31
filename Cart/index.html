@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DPhone</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- cdn tailwind -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.0/tailwind.min.css"
+      integrity="sha512-ksC7McuoU4VJ07WGtca5INyDRXzGsmhyEEJYzoWBkjC/KwuG+IK/pFnxJFNIGmOd8pmGexOxd3FziCPZXQJ4lA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font awsome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- my css -->
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="border-gray-200 py-6">
+        <div class="container header__container items-center">
+          <a href="../index.html" class="btn btn-success" target="_blank"
+            >Admin Page</a
+          >
+          <div>
+            <span class="font-bold text-3xl font-medium text-center"
+              >Dphone</span
+            >
+          </div>
+          <div class="search_input sm:w-[300px] md:w-[70%] relative flex">
+            <input
+              class="border-gray-200 border p-2 px-4 rounded-lg w-full"
+              type="text"
+              placeholder="Tìm kiếm...."
+            />
+            <button
+              type="button"
+              class="absolute right-0 top-0 mr-3 mt-3 text-gray-400"
+            >
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <div class="flex gap-5 text-gray-500 text-[30px]">
+            <div class="relative">
+              <i class="fa fa-user"></i>
+            </div>
+            <div class="relative" id="icon_active">
+              <i class="fa fa-heart"></i>
+            </div>
+            <div class="relative" id="icon_active">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- carousel -->
+    <section class="carousel">
+      <div class="container h-screen flex">
+        <div class="w-1/2 h-full flex flex-col justify-center space-y-5">
+          <h2 class="text-5xl">DPhone</h2>
+          <h3>Best Smartphone of 2023!</h3>
+          <p class="text-xs">
+            Cras tortor mi, lobortis quis ornare in, varius scelerisque urna.
+            Vivamus imperdiet dolor nec odio convallis consequat.
+          </p>
+          <div>
+            <button class="shop_info">Shop Info</button>
+          </div>
+        </div>
+        <div class="w-1/2 h-full">
+          <img src="./img/product-header2.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <!-- product -->
+    <section class="product">
+      <div class="container py-20">
+        <div class="title text-center text-2xl font-medium">
+          <h2>-Featured Products-</h2>
+        </div>
+        <div class="drop_down">
+          <label for="filter">Lọc sản phẩm</label>
+          <select id="filter">
+            <option value="all">Tất cả</option>
+            <option value="Iphone">Iphone</option>
+            <option value="Samsung">Samsung</option>
+          </select>
+        </div>
+        <!-- show product  -->
+        <div id="show_data" class="list grid grid-cols-3 gap-20"></div>
+      </div>
+      <!-- modal popup -->
+      <div id="my_modal" class="my_modal hide">
+        <div class="modal_inner">
+          <div class="modal_header">
+            <span>Chi Tiết Sản Phẩm</span>
+            <i onclick="btnClose()" class="fa fa-times"></i>
+          </div>
+          <div class="modal_body">
+            <div id="namePhone"></div>
+            <div id="pricePhone"></div>
+            <div id="screenPhone"></div>
+            <div id="backCamera"></div>
+            <div id="frontCamera"></div>
+            <div id="descPhone"></div>
+          </div>
+          <div class="modal_footer">
+            <button onclick="btnClose()">Close</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- cart -->
+    <section id="cart" class="cart">
+      <div class="contain">
+        <div class="cart_header">
+          <i id="closeCart" class="fa fa-times"></i>
+          <h2>Cart</h2>
+        </div>
+        <form action="">
+          <table>
+            <thead>
+              <tr>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Chọn</th>
+              </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+          </table>
+          <div class="price_total">
+            <p>Tổng tiền: <span id="price_total"></span></p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- shopping bag -->
+    <section class="shopping_bag">
+      <button class="btn btn-primary scrolling">
+        Giỏ Hàng
+        <i class="fa fa-shopping-cart"></i>
+      </button>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- my js -->
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
